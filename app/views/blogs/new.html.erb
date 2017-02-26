@@ -1,0 +1,37 @@
+<section>
+     <div class="row">
+
+     <% if @blog && @blog.errors.any? %>
+       <div id="error_explanation">
+         <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+         <ul>
+         <% @blog.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+         </ul>
+       </div>
+     <% end %>
+
+       <div class="col-sm-8 col-sm-offset-2">
+         <div class="blog_single">
+           <h1>Create a new blog post:</h1>
+
+           <%= form_tag '/blogs', method: :post do %>
+
+             <div>
+               <%= label_tag :title %>
+               <%= text_field_tag :title %>
+             </div>
+
+             <div>
+               <%= label_tag :body %>
+               <%= text_field_tag :body %>
+             </div>
+
+             <%= submit_tag "Process New post" %>
+             <%end %>
+         </div>
+       </div>
+     </div>
+   </section>
